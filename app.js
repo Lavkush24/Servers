@@ -53,7 +53,7 @@ app.get("/randomtodos",async (req,res) =>{
     let todos = [];
     for(let i=m; n>0; i++) {
         const todo = await Todo.find({_id: i});
-        todos = [...todos,todo];
+        todos = [...todos, todo[0]];
         n--;
     };
     res.json(todos);
