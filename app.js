@@ -69,6 +69,17 @@ app.get("/todo/:id",async (req,res) => {
     res.json(todo);
 });
 
+//request for the access all the descriptions of the todos 
+app.get("/sentence" , async (req,res) => {
+    let sentence = [];
+    for(let i=1; i<90; i++) {
+        const todo = await Todo.findById(i);
+        // console.log(todo.description)
+        sentence = [...sentence, todo["description"]];
+    };
+    res.json(sentence);
+});
+
 
 app.listen(8080, () => {
     console.log("Server is running.....");
